@@ -9,6 +9,6 @@ public class AboutController {
 
     @GetMapping("/about.html")
     public String about(Model model){
-        return "blog";
+        return "about";
     }
 }
