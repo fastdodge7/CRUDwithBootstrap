@@ -1,22 +1,31 @@
 package com.example.myPage.CRUDwithBootstrap.Domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Getter
 @Entity
-public class Post {
+@NoArgsConstructor
+public class Post extends BaseTimeEntity {
+
+    @Builder
+    public Post(Long id, String title, String content, Member author){
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String title;
-
-    @Column(nullable = false)
-    private Date postDate;
 
     @Lob
     private String content;

@@ -10,7 +10,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class PostDto {
     private final String title;
-    private final Date postDate;
     private final String content;
     private final String author;
 }

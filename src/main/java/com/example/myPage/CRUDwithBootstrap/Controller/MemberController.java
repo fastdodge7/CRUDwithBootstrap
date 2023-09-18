@@ -2,12 +2,15 @@ package com.example.myPage.CRUDwithBootstrap.Controller;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
 import com.example.myPage.CRUDwithBootstrap.Dto.MemberFormDto;
+import com.example.myPage.CRUDwithBootstrap.Dto.PostDto;
 import com.example.myPage.CRUDwithBootstrap.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -22,10 +25,22 @@ public class MemberController {
         return "memberRegistration";
     }
 
-    @GetMapping("/member2")
-    public String member2(Model model){
+    @GetMapping("member/list")
+    public String memberList(Model model){
+        List<Member> memberList = memberService.listAllMember();
+        model.addAttribute("memberList", memberList);
+        return "memberList";
+    }
 
-        return "memberRegistration";
+    @GetMapping("member/post")
+    public String post(Model model){
+        return "post";
+    }
+
+    @PostMapping("member/post")
+    public String postArticle(Model model, PostDto postDto){
+        System.out.println("title : " + postDto.getTitle() + "\nauthor : " + postDto.getAuthor() + "\ncontent : " + postDto.getContent());
+        return "redirect:/member/post";
     }
 
     @PostMapping(value = {"member/new"})
