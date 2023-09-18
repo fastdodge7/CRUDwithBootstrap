@@ -16,7 +16,7 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService){ this.memberService = memberService; }
 
-    @GetMapping("/member/new")
+    @GetMapping("member/new")
     public String member(Model model){
 
         return "memberRegistration";
@@ -28,7 +28,7 @@ public class MemberController {
         return "memberRegistration";
     }
 
-    @PostMapping(value = {"/member/new"})
+    @PostMapping(value = {"member/new"})
     public String memberRegistration(Model model, MemberFormDto form){
         System.out.println(form.getName());
 
