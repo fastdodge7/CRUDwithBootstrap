@@ -1,7 +1,7 @@
 package com.example.myPage.CRUDwithBootstrap.RepositoryTest.MemberRepositoryTest;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
-import com.example.myPage.CRUDwithBootstrap.Repository.JpaMemberRepository;
+import com.example.myPage.CRUDwithBootstrap.Repository.Member.JpaMemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

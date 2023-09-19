@@ -1,10 +1,9 @@
-package com.example.myPage.CRUDwithBootstrap.Repository;
+package com.example.myPage.CRUDwithBootstrap.Repository.Member;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

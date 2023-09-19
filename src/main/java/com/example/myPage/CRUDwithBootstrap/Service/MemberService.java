@@ -1,7 +1,7 @@
 package com.example.myPage.CRUDwithBootstrap.Service;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
-import com.example.myPage.CRUDwithBootstrap.Repository.MemberRepository;
+import com.example.myPage.CRUDwithBootstrap.Repository.Member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +25,23 @@ public class MemberService {
         return member;
     }
 
+    @Transactional
     public List<Member> listAllMember(){
         return memberRepository.findAll();
     }
 
+    @Transactional
     public Optional<Member> findById(Long id){
         return memberRepository.findById(id);
+    }
+
+    @Transactional
+    public List<Member> findByName(String name){
+        return memberRepository.findByName(name);
+    }
+
+    @Transactional
+    public List<Member> findByNickname(String nickname){
+        return memberRepository.findByNickname(nickname);
     }
 }

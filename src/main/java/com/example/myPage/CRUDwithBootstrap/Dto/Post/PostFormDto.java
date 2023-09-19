@@ -1,4 +1,4 @@
-package com.example.myPage.CRUDwithBootstrap.Dto;
+package com.example.myPage.CRUDwithBootstrap.Dto.Post;
 
 
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @RequiredArgsConstructor
-public class PostDto {
+public class PostFormDto {
     private final String title;
     private final String content;
     private final String author;

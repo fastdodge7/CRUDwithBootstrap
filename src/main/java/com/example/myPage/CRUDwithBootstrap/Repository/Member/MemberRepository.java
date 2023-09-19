@@ -1,4 +1,4 @@
-package com.example.myPage.CRUDwithBootstrap.Repository;
+package com.example.myPage.CRUDwithBootstrap.Repository.Member;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
 import org.springframework.stereotype.Repository;
