@@ -1,6 +1,8 @@
 package com.example.myPage.CRUDwithBootstrap.Service;
 
 import com.example.myPage.CRUDwithBootstrap.Domain.Post;
+import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostFormDto;
+import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostUpdateDto;
 import com.example.myPage.CRUDwithBootstrap.Repository.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,15 @@ public class PostService {
     public Post postSave(Post post){
         postRepository.savePost(post);
         return post;
+    }
+
+    @Transactional
+    public Post postUpdate(Long postId, PostFormDto postDto) {
+        System.out.println("newTitle : " + postDto.getTitle() + "\nnewContent : " + postDto.getContent());
+        Post targetPost = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalStateException("postId not found"));
+        targetPost.postUpdate(postDto);
+        return targetPost;
     }
 
     @Transactional

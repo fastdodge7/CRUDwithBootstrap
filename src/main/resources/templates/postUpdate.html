@@ -105,10 +105,10 @@
 				<div class="row">
 					<div class="col-md-8 col-md-push-1 animate-box">
 						<div class="row">
-							<form action="/post" method="post">
+							<form th:action="@{/post/update/{id}(id = ${post.id})}" method="post">
 								<div class="col-md-6">
 									<label for="title">제목</label>
-									<textarea type="text" id="title" name="title" class="form-control" rows="1" th:text="${post.title}" readonly></textarea>
+									<textarea type="text" id="title" name="title" class="form-control" rows="1" th:text="${post.title}" ></textarea>
 								</div>
 								<div class="col-md-6">
 									<label for="author">작성자</label>
@@ -116,8 +116,8 @@
 								</div>
 								<div class="col-md-12">
 									<label for="content">내용</label>
-									<textarea type="text" id="content" name="content" class="form-control" cols="30" rows="7" th:text="${post.content}" readonly></textarea>
-									<a th:href="@{/post/update/{id}(id = ${post.id})}" th:text="${post.title}"></a>
+									<textarea type="text" id="content" name="content" class="form-control" cols="30" rows="7" th:text="${post.content}"></textarea>
+									<input type="submit" value="수정하기" class="btn btn-primary">
 								</div>
 							</form>
 

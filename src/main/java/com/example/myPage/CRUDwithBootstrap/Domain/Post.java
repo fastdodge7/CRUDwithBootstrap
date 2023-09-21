@@ -1,5 +1,7 @@
 package com.example.myPage.CRUDwithBootstrap.Domain;
 
+import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostFormDto;
+import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostUpdateDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,5 +35,10 @@ public class Post extends BaseTimeEntity {
     @ManyToOne(targetEntity = Member.class)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     private Member author;
+
+    public void postUpdate(PostFormDto postDto){
+        this.title = postDto.getTitle();
+        this.content = postDto.getContent();
+    }
 
 }

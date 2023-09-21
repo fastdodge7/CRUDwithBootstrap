@@ -107,7 +107,7 @@
 			<tbody>
 			<tr th:each="post : ${postList}">
 				<td><a th:href="@{/post/view/{id}(id = ${post.id})}" th:text="${post.title}"></a></td>
-				<td th:text="${post.author}">작성자</td>
+				<td th:text="${post.author.name}">작성자</td>
 				<td th:text="${post.createdDate}">최초 등록일</td>
 				<td th:text="${post.modifiedDate}">최종 수정일</td>
 			</tr>

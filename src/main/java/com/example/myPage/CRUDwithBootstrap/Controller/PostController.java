@@ -3,7 +3,7 @@ package com.example.myPage.CRUDwithBootstrap.Controller;
 import com.example.myPage.CRUDwithBootstrap.Domain.Member;
 import com.example.myPage.CRUDwithBootstrap.Domain.Post;
 import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostFormDto;
-import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostInfoDto;
+import com.example.myPage.CRUDwithBootstrap.Dto.Post.PostUpdateDto;
 import com.example.myPage.CRUDwithBootstrap.Service.MemberService;
 import com.example.myPage.CRUDwithBootstrap.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +47,9 @@ public class PostController {
 
             postService.postSave(newPost);
         }catch(IllegalStateException e){
-
+            System.out.println(e.getMessage());
         }finally {
-            return "redirect:/member/post";
+            return "redirect:/post";
         }
     }
 
@@ -57,15 +57,27 @@ public class PostController {
     public String listAllPost(Model model){
         List<Post> postList = postService.listAllPost();
 
-        model.addAttribute("postList",postList.stream().map( element -> {
-            return new PostInfoDto(element.getId(), element.getTitle(), element.getAuthor().getName(), element.getCreatedDate(), element.getModifiedDate());
-        }));
+        model.addAttribute("postList", postList);
         return "postList";
     }
 
     @GetMapping("post/view/{id}")
     public String getPost(Model model, @PathVariable Long id){
-        model.addAttribute("post", postService.findById(id).get());
+        model.addAttribute("post", postService.findById(id).orElseThrow(() -> new IllegalStateException("postId not found")));
         return "postView";
+    }
+
+    @GetMapping("post/update/{id}")
+    public String updatePost(Model model, @PathVariable Long id){
+        model.addAttribute("post", postService.findById(id).orElseThrow(() -> new IllegalStateException("postId not found")));
+        return "postUpdate";
+    }
+
+    @PostMapping("post/update/{id}")
+    public String updatePost(Model model, @PathVariable Long id, PostFormDto postUpdateDto){
+        Post target = postService.findById(id).orElseThrow(() -> new IllegalStateException("postId not found"));
+        postService.postUpdate(target.getId(), postUpdateDto);
+        return "redirect:/post/list";
+
     }
 }
