@@ -20,6 +20,11 @@ public class JpaPostRepository implements PostRepository{
         return post;
     }
 
+    public Post deletePost(Post post){
+        em.remove(post);
+        return post;
+    }
+
     public Optional<Post> findById(Long id){
         return Optional.ofNullable(em.find(Post.class, id));
     }

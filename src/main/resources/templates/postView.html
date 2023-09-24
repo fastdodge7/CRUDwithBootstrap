@@ -117,7 +117,10 @@
 								<div class="col-md-12">
 									<label for="content">내용</label>
 									<textarea type="text" id="content" name="content" class="form-control" cols="30" rows="7" th:text="${post.content}" readonly></textarea>
-									<a th:href="@{/post/update/{id}(id = ${post.id})}" th:text="${post.title}"></a>
+								</div>
+								<div class="col-md-12 col-md-offset-2 text-center">
+									<a th:href="@{/post/update/{id}(id = ${post.id})}" class="btn btn-primary">글 수정하기</a>
+									<a th:href="@{/post/delete/{id}(id = ${post.id})}" class="btn btn-primary">글 삭제하기</a>
 								</div>
 							</form>
 

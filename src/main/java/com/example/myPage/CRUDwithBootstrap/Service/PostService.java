@@ -37,6 +37,14 @@ public class PostService {
     }
 
     @Transactional
+    public Post postDelete(Long postId) {
+        Post targetPost = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalStateException("postId not found"));
+        postRepository.deletePost(targetPost);
+        return targetPost;
+    }
+
+    @Transactional
     public List<Post> listAllPost(){
         return postRepository.findAll();
     }

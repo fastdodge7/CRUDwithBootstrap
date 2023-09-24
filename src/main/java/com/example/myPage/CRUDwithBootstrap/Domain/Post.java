@@ -13,7 +13,6 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 public class Post extends BaseTimeEntity {
-
     @Builder
     public Post(Long id, String title, String content, Member author){
         this.id = id;
@@ -40,5 +39,4 @@ public class Post extends BaseTimeEntity {
         this.title = postDto.getTitle();
         this.content = postDto.getContent();
     }
-
 }
