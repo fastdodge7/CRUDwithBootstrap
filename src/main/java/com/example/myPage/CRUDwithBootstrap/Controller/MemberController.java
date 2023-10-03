@@ -21,14 +21,14 @@ public class MemberController {
     @GetMapping("member/new")
     public String member(Model model){
 
-        return "memberRegistration";
+        return "member/memberRegistration";
     }
 
     @GetMapping("member/list")
     public String memberList(Model model){
         List<Member> memberList = memberService.listAllMember();
         model.addAttribute("memberList", memberList);
-        return "memberList";
+        return "member/memberList";
     }
 
 

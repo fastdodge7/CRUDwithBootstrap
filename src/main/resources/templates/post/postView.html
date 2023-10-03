@@ -66,14 +66,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="index.html">Air<span>.</span></a></div>
+						<div id="fh5co-logo"><a href="../index.html">Air<span>.</span></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../portfolio.html">Portfolio</a></li>
 							<li class="has-dropdown">
-								<a href="blog.html">Blog</a>
+								<a href="../blog.html">Blog</a>
 								<ul class="dropdown">
 									<li><a href="#">Web Design</a></li>
 									<li><a href="#">eCommerce</a></li>
@@ -81,8 +81,8 @@
 									<li><a href="#">API</a></li>
 								</ul>
 							</li>
-							<li><a href="about.html">About</a></li>
-							<li class="active"><a href="contact.html">Contact</a></li>
+							<li><a href="../about.html">About</a></li>
+							<li class="active"><a href="../contact.html">Contact</a></li>
 							<li class="btn-cta"><a href="#"><span>Login</span></a></li>
 						</ul>
 					</div>
@@ -103,12 +103,12 @@
 		</div>
 		<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-push-1 animate-box">
+					<div class="col-md-8 col-md-push-2 animate-box">
 						<div class="row">
-							<form th:action="@{/post/update/{id}(id = ${post.id})}" method="post">
+							<form action="/post" method="post">
 								<div class="col-md-6">
 									<label for="title">제목</label>
-									<textarea type="text" id="title" name="title" class="form-control" rows="1" th:text="${post.title}" ></textarea>
+									<textarea type="text" id="title" name="title" class="form-control" rows="1" th:text="${post.title}" readonly></textarea>
 								</div>
 								<div class="col-md-6">
 									<label for="author">작성자</label>
@@ -116,8 +116,11 @@
 								</div>
 								<div class="col-md-12">
 									<label for="content">내용</label>
-									<textarea type="text" id="content" name="content" class="form-control" cols="30" rows="7" th:text="${post.content}"></textarea>
-									<input type="submit" value="수정하기" class="btn btn-primary">
+									<textarea type="text" id="content" name="content" class="form-control" cols="30" rows="7" th:text="${post.content}" readonly></textarea>
+								</div>
+								<div class="col-md-12 text-center">
+									<a th:href="@{/post/update/{id}(id = ${post.id})}" class="btn btn-primary">글 수정하기</a>
+									<a th:href="@{/post/delete/{id}(id = ${post.id})}" class="btn btn-primary">글 삭제하기</a>
 								</div>
 							</form>
 

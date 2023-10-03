@@ -67,7 +67,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="index.html">Air<span>.</span></a></div>
+						<div id="fh5co-logo"><a href="../index.html">Air<span>.</span></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
@@ -93,38 +93,27 @@
 		</div>
 	</nav>
 
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-2 text-center">
-					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<h1>등록된 회원 목록</h1>
-							<table id="memberTable" class="table">
-								<thead>
-								<tr>
-									<th>이름</th>
-									<th>닉네임</th>
-									<th>이메일</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr th:each="member : ${memberList}">
-									<td th:text="${member.name}">이름</td>
-									<td th:text="${member.nickname}">닉네임</td>
-									<td th:text="${member.email}">이메일</td>
-								</tr>
-								</tbody>
-							</table>
-
-							<p><a class="btn btn-primary btn-lg btn-demo" href="#"></i> View Demo</a> <a class="btn btn-primary btn-lg btn-learn">Learn More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<div class="table-responsive clearfix">
+		<h1 align="center">작성된 글 목록</h1>
+		<table id="memberTable" class="table table-hover" style="width: 75%;margin-left: auto;margin-right: auto">
+			<thead>
+			<tr>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>최초 등록일</th>
+				<th>최종 수정일</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="post : ${postList}">
+				<td><a th:href="@{/post/view/{id}(id = ${post.id})}" th:text="${post.title}"></a></td>
+				<td th:text="${post.author.name}">작성자</td>
+				<td th:text="${post.createdDate}">최초 등록일</td>
+				<td th:text="${post.modifiedDate}">최종 수정일</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<div id="fh5co-features">
 		<div class="container">

@@ -30,7 +30,7 @@ public class PostController {
 
     @GetMapping("post")
     public String post(Model model){
-        return "post";
+        return "post/post";
     }
 
     @PostMapping("post")
@@ -59,19 +59,19 @@ public class PostController {
         List<Post> postList = postService.listAllPost();
 
         model.addAttribute("postList", postList);
-        return "postList";
+        return "post/postList";
     }
 
     @GetMapping("post/view/{id}")
     public String getPost(Model model, @PathVariable Long id){
         model.addAttribute("post", postService.findById(id).orElseThrow(() -> new IllegalStateException("postId not found")));
-        return "postView";
+        return "post/postView";
     }
 
     @GetMapping("post/update/{id}")
     public String updatePost(Model model, @PathVariable Long id){
         model.addAttribute("post", postService.findById(id).orElseThrow(() -> new IllegalStateException("postId not found")));
-        return "postUpdate";
+        return "post/postUpdate";
     }
 
     @PostMapping("post/update/{id}")
